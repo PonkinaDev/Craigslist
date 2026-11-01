@@ -11,6 +11,7 @@ export default function Layout() {
   const { pathname, hash } = useLocation()
   const navigate = useNavigate()
   const isHome = pathname === '/'
+  const showSearch = pathname !== '/favoritos'
 
   useEffect(() => {
     if (!hash) window.scrollTo(0, 0)
@@ -23,6 +24,7 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col bg-page text-ink">
       <Header
+        showSearch={showSearch}
         query={query}
         onQueryChange={setQuery}
         onSearchSubmit={handleSearchSubmit}
