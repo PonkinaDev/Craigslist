@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PeaceIcon from './PeaceIcon'
 
 const sizes = {
@@ -9,9 +10,9 @@ export default function Logo({ size = 'md' }) {
   const { icon, text } = sizes[size]
 
   return (
-    <a href="/" className="flex items-center gap-1.5 text-brand" aria-label="craigslist">
+    <Link to="/" className="flex items-center gap-1.5 text-brand" aria-label="craigslist">
       <PeaceIcon className={icon} />
       <span className={`${text} font-semibold tracking-tight`}>craigslist</span>
-    </a>
+    </Link>
   )
 }

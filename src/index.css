@@ -15,6 +15,7 @@
   --ink: #2b2b2b;
   --ink-soft: #5c5c5c;
   --line: #bdbdbd;
+  --required: #c0392b;
 }
 
 .dark {
@@ -30,6 +31,8 @@
   --ink: #ececec;
   --ink-soft: #b4b0b8;
   --line: #4a444f;
+  --required: #ff8a80;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -45,6 +48,7 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-line: var(--line);
+  --color-required: var(--required);
 }
 
 @utility no-scrollbar {

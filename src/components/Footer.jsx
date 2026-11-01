@@ -9,7 +9,30 @@ const mainLinks = [
 
 const legalLinks = ['Privacidad', 'Preferencias de cookies', 'Términos de uso']
 
-export default function Footer() {
+function LegalLinks() {
+  return (
+    <ul className="flex gap-6">
+      {legalLinks.map((label) => (
+        <li key={label}>
+          <a href="#" className="hover:text-brand">
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export default function Footer({ compact = false }) {
+  if (compact) {
+    return (
+      <footer className="flex flex-wrap items-center justify-between gap-2 bg-bar px-4 py-3 text-[11px] text-ink-soft sm:px-8">
+        <span>© 2026 craigslist</span>
+        <LegalLinks />
+      </footer>
+    )
+  }
+
   return (
     <footer className="bg-bar px-4 py-5 sm:px-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -30,15 +53,7 @@ export default function Footer() {
 
           <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-ink-soft">
             <span>© 2026 craigslist</span>
-            <ul className="flex gap-6">
-              {legalLinks.map((label) => (
-                <li key={label}>
-                  <a href="#" className="hover:text-brand">
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <LegalLinks />
           </div>
         </div>
 

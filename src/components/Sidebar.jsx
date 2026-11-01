@@ -1,4 +1,5 @@
 import { MapPin, SquarePen } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import EventCalendar from './EventCalendar'
 import HelpMenu from './HelpMenu'
 
@@ -18,13 +19,13 @@ export default function Sidebar({ location, onOpenLocation }) {
         </span>
       </button>
 
-      <button
-        type="button"
+      <Link
+        to="/publicar"
         className="flex items-center justify-center gap-3 rounded-md border border-brand bg-bar-soft px-3 py-2 text-sm text-ink transition hover:brightness-95"
       >
         <SquarePen className="size-5 text-ink" />
         Anunciate
-      </button>
+      </Link>
 
       <EventCalendar />
 
