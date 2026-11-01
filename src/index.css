@@ -1,1 +1,62 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --page: #ebebeb;
+  --sidebar: #dedede;
+  --chip: #e0e0e0;
+  --bar: #d9c9e6;
+  --bar-soft: #f4e9fd;
+  --card-label: #d9c9e6;
+  --field: #ffffff;
+  --control: #e4e4e4;
+  --brand: #7b2d9b;
+  --ink: #2b2b2b;
+  --ink-soft: #5c5c5c;
+  --line: #bdbdbd;
+}
+
+.dark {
+  --page: #151317;
+  --sidebar: #1d1a20;
+  --chip: #2a262e;
+  --bar: #2b2036;
+  --bar-soft: #34283f;
+  --card-label: #3a2b48;
+  --field: #2b2730;
+  --control: #332e38;
+  --brand: #c58df0;
+  --ink: #ececec;
+  --ink-soft: #b4b0b8;
+  --line: #4a444f;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-sidebar: var(--sidebar);
+  --color-chip: var(--chip);
+  --color-bar: var(--bar);
+  --color-bar-soft: var(--bar-soft);
+  --color-card-label: var(--card-label);
+  --color-field: var(--field);
+  --color-control: var(--control);
+  --color-brand: var(--brand);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body {
+  background-color: var(--page);
+  color: var(--ink);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
