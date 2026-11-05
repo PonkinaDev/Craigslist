@@ -1,10 +1,13 @@
 import { Briefcase, Gauge, ShoppingBasket, Users } from 'lucide-react'
 
+const LISTINGS_PATH = '/anuncios'
+
 export const sections = [
   {
     id: 'comunidad',
     title: 'Comunidad',
     icon: Users,
+    to: LISTINGS_PATH,
     items: ['Actividades', 'Foros', 'Voluntariado', 'Objetos Perdidos', 'Grupos', 'Clases', 'Música', 'Mascotas'],
   },
   {
@@ -17,12 +20,14 @@ export const sections = [
     id: 'servicios',
     title: 'Servicios',
     icon: Gauge,
+    to: LISTINGS_PATH,
     items: ['Legales', 'Informatica', 'Mudanzas', 'Eventos', 'Belleza', 'Reparaciones', 'Transporte', 'Fotografía'],
   },
   {
     id: 'trabajo',
     title: 'Trabajo',
     icon: Briefcase,
+    to: LISTINGS_PATH,
     items: ['De medio tiempo', 'Curriculums', 'ONGs', 'Educacion', 'Tiempo completo', 'Remoto', 'Freelance', 'Pasantías'],
   },
 ]

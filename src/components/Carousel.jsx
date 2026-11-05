@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import ArrowButton from './ArrowButton'
 import CategoryCard from './CategoryCard'
 
-export default function Carousel({ items }) {
+export default function Carousel({ items, to }) {
   const trackRef = useRef(null)
   const [edges, setEdges] = useState({ atStart: true, atEnd: false })
 
@@ -44,7 +44,7 @@ export default function Carousel({ items }) {
             key={item}
             className="shrink-0 basis-[calc((100%-1.5rem)/2)] snap-start md:basis-[calc((100%-4.5rem)/4)]"
           >
-            <CategoryCard label={item} />
+            <CategoryCard label={item} to={to} />
           </li>
         ))}
       </ul>

@@ -1,6 +1,6 @@
-import FavoritesSearch from '../components/favorites/FavoritesSearch'
 import FavoritesSidebar from '../components/favorites/FavoritesSidebar'
 import ResultsToolbar from '../components/favorites/ResultsToolbar'
+import PageSearch from '../components/PageSearch'
 import { favorites } from '../data/favorites'
 
 export default function Favorites() {
@@ -9,7 +9,7 @@ export default function Favorites() {
       <FavoritesSidebar />
 
       <main className="min-w-0 flex-1 space-y-4 p-4 sm:p-6">
-        <FavoritesSearch />
+        <PageSearch placeholder="Busqueda de Favorito" />
         <ResultsToolbar total={favorites.length} />
         <hr className="border-ink/40" />
         {favorites.length === 0 && <p className="text-xs text-ink-soft">No hay nada guardado</p>}

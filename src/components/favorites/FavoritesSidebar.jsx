@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react'
+import SafetyCard from '../SafetyCard'
 import FavoriteFilters from './FavoriteFilters'
-import SafetyCard from './SafetyCard'
 
 export default function FavoritesSidebar() {
   return (

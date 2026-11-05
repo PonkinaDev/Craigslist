@@ -1,11 +1,8 @@
 import { useRef, useState } from 'react'
 import { Search } from 'lucide-react'
 import useDismiss from '../hooks/useDismiss'
+import { DEFAULT_LOCATION, buildMapUrl } from '../utils/maps'
 import ArrowButton from './ArrowButton'
-
-const DEFAULT_LOCATION = 'Bogotá, Colombia'
-
-const buildMapUrl = (query) => `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=11&output=embed`
 
 export default function LocationModal({ initialLocation, onClose, onConfirm }) {
   const startingPoint = initialLocation || DEFAULT_LOCATION

@@ -11,7 +11,8 @@ export default function Layout() {
   const { pathname, hash } = useLocation()
   const navigate = useNavigate()
   const isHome = pathname === '/'
-  const showSearch = pathname !== '/favoritos'
+  const hasOwnSearch = pathname === '/favoritos' || pathname === '/anuncios'
+  const showSearch = !hasOwnSearch
 
   useEffect(() => {
     if (!hash) window.scrollTo(0, 0)
