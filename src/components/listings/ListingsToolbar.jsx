@@ -3,8 +3,8 @@ import { filterSelects } from '../../data/listings'
 import PillSelect from '../PillSelect'
 import ViewSwitcher from '../ViewSwitcher'
 
-export default function ListingsToolbar() {
-  const [view, setView] = useState('list')
+export default function ListingsToolbar({ defaultView = 'list' }) {
+  const [view, setView] = useState(defaultView)
 
   return (
     <div className="space-y-3">

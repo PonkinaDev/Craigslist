@@ -4,6 +4,8 @@ import useDarkMode from '../hooks/useDarkMode'
 import Footer from './Footer'
 import Header from './Header'
 
+const PAGES_WITH_OWN_SEARCH = ['/favoritos', '/anuncios', '/en-venta']
+
 export default function Layout() {
   const [isDark, toggleTheme] = useDarkMode()
   const [query, setQuery] = useState('')
@@ -11,8 +13,7 @@ export default function Layout() {
   const { pathname, hash } = useLocation()
   const navigate = useNavigate()
   const isHome = pathname === '/'
-  const hasOwnSearch = pathname === '/favoritos' || pathname === '/anuncios'
-  const showSearch = !hasOwnSearch
+  const showSearch = !PAGES_WITH_OWN_SEARCH.includes(pathname)
 
   useEffect(() => {
     if (!hash) window.scrollTo(0, 0)

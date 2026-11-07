@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { useOutletContext } from 'react-router-dom'
 import ListingRow from '../components/listings/ListingRow'
 import ListingsSidebar from '../components/listings/ListingsSidebar'
 import ListingsToolbar from '../components/listings/ListingsToolbar'
@@ -7,19 +5,14 @@ import Pagination from '../components/listings/Pagination'
 import LocationModal from '../components/LocationModal'
 import PageSearch from '../components/PageSearch'
 import { listings } from '../data/listings'
+import useLocationModal from '../hooks/useLocationModal'
 
 export default function Listings() {
-  const { location, setLocation } = useOutletContext()
-  const [isLocationOpen, setIsLocationOpen] = useState(false)
-
-  const handleConfirmLocation = (value) => {
-    setLocation(value)
-    setIsLocationOpen(false)
-  }
+  const locationModal = useLocationModal()
 
   return (
     <div className="flex flex-1 flex-col lg:flex-row">
-      <ListingsSidebar onOpenMap={() => setIsLocationOpen(true)} />
+      <ListingsSidebar onOpenMap={locationModal.open} />
 
       <main className="min-w-0 flex-1 space-y-4 p-4 sm:p-6">
         <PageSearch placeholder="Busqueda de categoria" />
@@ -34,11 +27,11 @@ export default function Listings() {
         <Pagination />
       </main>
 
-      {isLocationOpen && (
+      {locationModal.isOpen && (
         <LocationModal
-          initialLocation={location}
-          onClose={() => setIsLocationOpen(false)}
-          onConfirm={handleConfirmLocation}
+          initialLocation={locationModal.location}
+          onClose={locationModal.close}
+          onConfirm={locationModal.confirm}
         />
       )}
     </div>

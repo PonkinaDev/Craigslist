@@ -1,6 +1,7 @@
 import { Briefcase, Gauge, ShoppingBasket, Users } from 'lucide-react'
 
 const LISTINGS_PATH = '/anuncios'
+const SALES_PATH = '/en-venta'
 
 export const sections = [
   {
@@ -14,6 +15,7 @@ export const sections = [
     id: 'ventas',
     title: 'Ventas',
     icon: ShoppingBasket,
+    to: SALES_PATH,
     items: ['Vivienda', 'Vehiculos', 'Gratis', 'Trueque', 'Electrónica', 'Muebles', 'Ropa', 'Bicicletas'],
   },
   {
