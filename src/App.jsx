@@ -5,6 +5,7 @@ import ForSale from './pages/ForSale'
 import Home from './pages/Home'
 import Listings from './pages/Listings'
 import NotFound from './pages/NotFound'
+import ProductDetail from './pages/ProductDetail'
 import PublishListing from './pages/PublishListing'
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="anuncios" element={<Listings />} />
         <Route path="en-venta" element={<ForSale />} />
+        <Route path="en-venta/:saleId" element={<ProductDetail />} />
         <Route path="favoritos" element={<Favorites />} />
         <Route path="publicar" element={<PublishListing />} />
         <Route path="*" element={<NotFound />} />
