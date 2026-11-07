@@ -12,8 +12,8 @@ const GALLERY_SIZE = 4
 const description =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam cursus tellus pulvinar ornare. Pellentesque et ex sem. Sed ut sodales risus, tincidunt pretium ligula. Nunc in posuere sapien, id eleifend erat. Integer sagittis elit dolor. Suspendisse blandit augue quis enim iaculis varius. Aenean eu ipsum facilisis, tempus turpis sit amet, vehicula tellus.'
 
-const apiGallery = (keyword, firstLock) =>
-  Array.from({ length: GALLERY_SIZE }, (_, offset) => imageUrl(keyword, firstLock + offset))
+const apiGallery = (seed) =>
+  Array.from({ length: GALLERY_SIZE }, (_, index) => imageUrl(`${seed}-${index + 1}`))
 
 const buildSale = (id, { images, brand, model }) => ({
   id,
@@ -28,13 +28,11 @@ const buildSale = (id, { images, brand, model }) => ({
   condition: 'Excelente',
 })
 
-const sampleKeywords = ['car', 'gift', 'market', 'laptop', 'sofa', 'clothes', 'bicycle']
-
 export const sales = [
-  buildSale(0, { images: [goats, ...apiGallery('goat', 101).slice(1)], brand: 'Goat', model: 'Cabra' }),
-  ...sampleKeywords.map((keyword, index) =>
+  buildSale(0, { images: [goats, ...apiGallery('venta-0').slice(1)], brand: 'Goat', model: 'Cabra' }),
+  ...Array.from({ length: 7 }, (_, index) =>
     buildSale(index + 1, {
-      images: apiGallery(keyword, (index + 2) * 100),
+      images: apiGallery(`venta-${index + 1}`),
       brand: 'Lorem Ipsum',
       model: 'Lorem Ipsum',
     }),

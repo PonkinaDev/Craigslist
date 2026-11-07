@@ -9,6 +9,7 @@ export default function RemoteImage({ src, alt = '', className }) {
       src={hasFailed ? fallback : src}
       alt={alt}
       loading="lazy"
+      draggable="false"
       onError={() => setHasFailed(true)}
       className={className}
     />

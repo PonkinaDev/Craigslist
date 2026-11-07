@@ -1,4 +1,4 @@
-const IMAGE_API = 'https://loremflickr.com'
+const IMAGE_API = 'https://picsum.photos'
 
-export const imageUrl = (keyword, lock, width = 640, height = 480) =>
-  `${IMAGE_API}/${width}/${height}/${keyword}?lock=${lock}`
+export const imageUrl = (seed, width = 640, height = 480) =>
+  `${IMAGE_API}/seed/${encodeURIComponent(seed)}/${width}/${height}`
