@@ -4,6 +4,7 @@ import useDarkMode from '../hooks/useDarkMode'
 import Footer from './Footer'
 import Header from './Header'
 
+const FORUMS_PATH = '/foros'
 const PAGES_WITHOUT_HEADER_SEARCH = ['/favoritos', '/anuncios', '/en-venta']
 
 export default function Layout() {
@@ -13,6 +14,7 @@ export default function Layout() {
   const { pathname, hash } = useLocation()
   const navigate = useNavigate()
   const isHome = pathname === '/'
+  const isForums = pathname === FORUMS_PATH
   const showSearch = !PAGES_WITHOUT_HEADER_SEARCH.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
   )
@@ -21,14 +23,19 @@ export default function Layout() {
     if (!hash) window.scrollTo(0, 0)
   }, [pathname, hash])
 
+  useEffect(() => {
+    setQuery('')
+  }, [isForums])
+
   const handleSearchSubmit = () => {
-    if (!isHome) navigate('/')
+    if (!isHome && !isForums) navigate('/')
   }
 
   return (
     <div className="flex min-h-screen flex-col bg-page text-ink">
       <Header
         showSearch={showSearch}
+        searchPlaceholder={isForums ? 'Busca en el foro' : undefined}
         query={query}
         onQueryChange={setQuery}
         onSearchSubmit={handleSearchSubmit}

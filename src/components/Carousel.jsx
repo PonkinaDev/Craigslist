@@ -1,38 +1,14 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { itemLinks } from '../data/categories'
+import useScrollEdges from '../hooks/useScrollEdges'
 import ArrowButton from './ArrowButton'
 import CategoryCard from './CategoryCard'
 
 export default function Carousel({ items, to }) {
-  const trackRef = useRef(null)
-  const [edges, setEdges] = useState({ atStart: true, atEnd: false })
-
-  const updateEdges = useCallback(() => {
-    const track = trackRef.current
-    if (!track) return
-    setEdges({
-      atStart: track.scrollLeft <= 1,
-      atEnd: track.scrollLeft + track.clientWidth >= track.scrollWidth - 1,
-    })
-  }, [])
-
-  useEffect(() => {
-    updateEdges()
-    window.addEventListener('resize', updateEdges)
-    return () => window.removeEventListener('resize', updateEdges)
-  }, [updateEdges])
-
-  const scrollByCard = (direction) => {
-    const track = trackRef.current
-    const firstCard = track?.firstElementChild
-    if (!firstCard) return
-
-    const gap = parseFloat(getComputedStyle(track).columnGap) || 0
-    track.scrollBy({ left: direction * (firstCard.offsetWidth + gap), behavior: 'smooth' })
-  }
+  const { trackRef, edges, updateEdges, scrollByItem } = useScrollEdges()
 
   return (
     <div className="flex items-center gap-3">
-      <ArrowButton direction="prev" disabled={edges.atStart} onClick={() => scrollByCard(-1)} />
+      <ArrowButton direction="prev" disabled={edges.atStart} onClick={() => scrollByItem(-1)} />
 
       <ul
         ref={trackRef}
@@ -44,12 +20,12 @@ export default function Carousel({ items, to }) {
             key={item}
             className="shrink-0 basis-[calc((100%-1.5rem)/2)] snap-start md:basis-[calc((100%-4.5rem)/4)]"
           >
-            <CategoryCard label={item} to={to} />
+            <CategoryCard label={item} to={itemLinks[item] ?? to} />
           </li>
         ))}
       </ul>
 
-      <ArrowButton direction="next" disabled={edges.atEnd} onClick={() => scrollByCard(1)} />
+      <ArrowButton direction="next" disabled={edges.atEnd} onClick={() => scrollByItem(1)} />
     </div>
   )
 }

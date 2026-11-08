@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Favorites from './pages/Favorites'
 import ForSale from './pages/ForSale'
+import Forums from './pages/Forums'
 import Home from './pages/Home'
 import Listings from './pages/Listings'
 import NotFound from './pages/NotFound'
@@ -14,6 +15,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="anuncios" element={<Listings />} />
+        <Route path="foros" element={<Forums />} />
         <Route path="en-venta" element={<ForSale />} />
         <Route path="en-venta/:saleId" element={<ProductDetail />} />
         <Route path="favoritos" element={<Favorites />} />

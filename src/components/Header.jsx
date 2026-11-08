@@ -7,6 +7,7 @@ import ThemeToggle from './ThemeToggle'
 
 export default function Header({
   showSearch = true,
+  searchPlaceholder,
   query,
   onQueryChange,
   onSearchSubmit,
@@ -21,7 +22,12 @@ export default function Header({
 
       {showSearch && (
         <div className="order-last flex w-full items-center justify-center gap-2 sm:order-none sm:w-auto sm:flex-1">
-          <SearchBar value={query} onChange={onQueryChange} onSubmit={onSearchSubmit} />
+          <SearchBar
+            value={query}
+            onChange={onQueryChange}
+            onSubmit={onSearchSubmit}
+            placeholder={searchPlaceholder}
+          />
           {themeToggle}
         </div>
       )}

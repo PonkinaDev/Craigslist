@@ -1,6 +1,6 @@
 import { Search } from 'lucide-react'
 
-export default function SearchBar({ value, onChange, onSubmit }) {
+export default function SearchBar({ value, onChange, onSubmit, placeholder = 'Busqueda de categoria' }) {
   const handleSubmit = (event) => {
     event.preventDefault()
     onSubmit?.()
@@ -17,8 +17,8 @@ export default function SearchBar({ value, onChange, onSubmit }) {
         type="search"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Busqueda de categoria"
-        aria-label="Busqueda de categoria"
+        placeholder={placeholder}
+        aria-label={placeholder}
         className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-ink-soft"
       />
     </form>
