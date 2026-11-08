@@ -1,5 +1,4 @@
 import goats from '../assets/goats.jpg'
-import { imageUrl } from '../utils/images'
 
 export const salesTitle = 'En venta'
 
@@ -7,17 +6,13 @@ export const sellerTypes = ['All', 'Owner', 'dealer']
 
 export const languageOptions = ['Español', 'English', 'Português']
 
-const GALLERY_SIZE = 4
-
 const description =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam cursus tellus pulvinar ornare. Pellentesque et ex sem. Sed ut sodales risus, tincidunt pretium ligula. Nunc in posuere sapien, id eleifend erat. Integer sagittis elit dolor. Suspendisse blandit augue quis enim iaculis varius. Aenean eu ipsum facilisis, tempus turpis sit amet, vehicula tellus.'
 
-const apiGallery = (seed) =>
-  Array.from({ length: GALLERY_SIZE }, (_, index) => imageUrl(`${seed}-${index + 1}`))
-
-const buildSale = (id, { images, brand, model }) => ({
+const buildSale = (id, { topic, cover, brand = 'Lorem Ipsum', model = 'Lorem Ipsum' }) => ({
   id,
-  images,
+  topic,
+  cover,
   brand,
   model,
   description,
@@ -29,14 +24,14 @@ const buildSale = (id, { images, brand, model }) => ({
 })
 
 export const sales = [
-  buildSale(0, { images: [goats, ...apiGallery('venta-0').slice(1)], brand: 'Goat', model: 'Cabra' }),
-  ...Array.from({ length: 7 }, (_, index) =>
-    buildSale(index + 1, {
-      images: apiGallery(`venta-${index + 1}`),
-      brand: 'Lorem Ipsum',
-      model: 'Lorem Ipsum',
-    }),
-  ),
+  buildSale(0, { topic: 'goat', cover: goats, brand: 'Goat', model: 'Cabra' }),
+  buildSale(1, { topic: 'bicycle' }),
+  buildSale(2, { topic: 'sofa living room' }),
+  buildSale(3, { topic: 'laptop' }),
+  buildSale(4, { topic: 'car' }),
+  buildSale(5, { topic: 'clothes' }),
+  buildSale(6, { topic: 'acoustic guitar' }),
+  buildSale(7, { topic: 'smartphone' }),
 ]
 
 export const findSale = (id) => sales.find((sale) => String(sale.id) === id)

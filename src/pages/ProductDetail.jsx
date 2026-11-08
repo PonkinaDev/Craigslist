@@ -23,7 +23,7 @@ export default function ProductDetail() {
         </h1>
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_27rem]">
-          <ProductGallery key={sale.id} images={sale.images} title={sale.detailTitle} />
+          <ProductGallery key={sale.id} sale={sale} />
           <ProductInfo sale={sale} />
         </div>
       </div>

@@ -1,15 +1,17 @@
 import { useState } from 'react'
+import useSaleImages from '../../hooks/useSaleImages'
 import RemoteImage from '../RemoteImage'
 
-export default function ProductGallery({ images, title }) {
+export default function ProductGallery({ sale }) {
   const [selected, setSelected] = useState(0)
+  const images = useSaleImages(sale)
 
   return (
     <div className="space-y-4">
       <RemoteImage
         key={images[selected]}
         src={images[selected]}
-        alt={title}
+        alt={sale.detailTitle}
         className="aspect-[8/5] w-full bg-chip object-cover"
       />
 
